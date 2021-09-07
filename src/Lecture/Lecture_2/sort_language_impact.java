@@ -1,5 +1,7 @@
 package Lecture.Lecture_2;
 
+import java.security.SecureRandom;
+
 public class sort_language_impact {
     public static void main(String[] args) {
         test1();

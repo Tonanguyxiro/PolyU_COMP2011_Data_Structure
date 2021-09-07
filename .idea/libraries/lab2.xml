@@ -3,7 +3,8 @@
     <CLASSES />
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/Downloads/lab2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libs/lab2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Libs/lec2.jar!/" />
     </SOURCES>
   </library>
 </component>
