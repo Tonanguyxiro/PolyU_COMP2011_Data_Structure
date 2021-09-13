@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="lec2">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/Sample_code/lec2.jar!/" />
+    </SOURCES>
+  </library>
+</component>

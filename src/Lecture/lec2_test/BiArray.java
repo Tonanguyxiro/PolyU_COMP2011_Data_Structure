@@ -1,4 +1,4 @@
-package Lecture.Lecture_2;
+package Lecture.lec2_test;
 import java.security.SecureRandom;
 
 public class BiArray {
