@@ -1,45 +1,45 @@
-package Lecture.Assignment1_template;
-
-import java.util.Arrays;
+package Assignment.Assignment1;
 
 /*
  * @author Yixin Cao (September 11, 2021)
  *
- * You have been deliver a hand of cards, and you sorted them in the suit-first order: 
- * spades, hearts, clubs, and diamonds, each suit in decreasing order. 
+ * You have been deliver a hand of cards, and you sorted them in the suit-first order:
+ * spades, hearts, clubs, and diamonds, each suit in decreasing order.
  *
  * See {@code main} where the input is in this order.
  * [♠A, ♠10, ♠8, ♠4, ♠2, ♥K, ♥J, ♥9, ♥8, ♥2, ♣10, ♣4, ♦A, ♦J, ♦9, ♦7, ♦6, ♦4]
  *
  * Your task is to reorder them into rank-first order: for cards of the same rank, you follow the order of spade, heart, club, and then diamond.
- * 
- * For the given hand, the correct result should be: 
+ *
+ * For the given hand, the correct result should be:
  * [♠A, ♦A, ♥K, ♥J, ♦J, ♠10, ♣10, ♥9, ♦9, ♠8, ♥8, ♦7, ♦6, ♠4, ♣4, ♦4, ♠2, ♥2]
- * 
+ *
  * You need to set your "text file encoding" to UTF-8 to run this class.
- * Otherwise, the suits of cards cannot be shown properly. 
- * 
+ * Otherwise, the suits of cards cannot be shown properly.
+ *
  * The class {@code Card} is at the end of this file.
  */
-public class CardGame_12345678d_TangTszkei { // Please change!
 
-    /**
+import java.util.Arrays;
+
+public class CardGame_21022673X_YuanTong {
+     /**
      * VERY IMPORTANT.
-     * 
+     *
      * I've discussed this question with the following students:
-     *     1. 
-     *     2. 
-     *     3. 
-     *     ... 
-     * 
+     *     1.
+     *     2.
+     *     3.
+     *     ...
+     *
      * I've sought help from the following Internet resources and books:
-     *     1. 
-     *     2. 
-     *     3. 
-     *     ... 
-     * 
-     * Running time: O(   ).   
-     */ 
+     *     1.
+     *     2.
+     *     3.
+     *     ...
+     *
+     * Running time: O(   ).
+     */
     public static void reorder(Card[] hand) { // Rank first
         if(hand.length == 0){
             System.out.println("Oops! No element in hand!");
@@ -84,7 +84,7 @@ public class CardGame_12345678d_TangTszkei { // Please change!
             }
         }
     }
-    
+
 
 
     // Bonus question: reorder in the other direction: rank-first to suit-first.
@@ -133,21 +133,21 @@ public class CardGame_12345678d_TangTszkei { // Please change!
         }
     }
 
-    
+
     public static void main(String[] args) {
         /*
          * The following 12 lines are for setting our test data.
-         * You can revise them to change the hand for testing. 
+         * You can revise them to change the hand for testing.
          */
-        byte[][] data = {{14, 10, 8, 4, 2}, // Spades 
-                {13, 11, 9, 8, 2}, // Hearts 
+        byte[][] data = {{14, 10, 8, 4, 2}, // Spades
+                {13, 11, 9, 8, 2}, // Hearts
                 {10, 4}, // Clubs
                 {14, 11, 9, 7, 6, 4} // Diamonds
                 };
         Card[] hand = new Card[18];
         for (int i = 0; i < hand.length; i++) {
             for (byte suit = 0; suit < 4; suit++) {
-                for (int j = 0; j < data[suit].length; j++) 
+                for (int j = 0; j < data[suit].length; j++)
                     hand[i++] = new Card(suit, data[suit][j]);
             }
         }
@@ -171,7 +171,7 @@ class Card {
     public static final byte DIAMOND = 3;
 
     public Card(byte suit, byte rank) {
-        this.suit = suit; 
+        this.suit = suit;
         this.rank = rank;
     }
     public String toString() {
@@ -195,3 +195,4 @@ class Card {
         return suit * 20 - rank;
     }
 }
+
