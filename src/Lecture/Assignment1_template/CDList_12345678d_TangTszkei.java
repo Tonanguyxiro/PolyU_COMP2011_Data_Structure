@@ -59,13 +59,85 @@ public class CDList_12345678d_TangTszkei { // Please change! In Eclipse, press A
      */ 
 	public CDList_12345678d_TangTszkei[] split() {
 		CDList_12345678d_TangTszkei[] ans = new CDList_12345678d_TangTszkei[3];
+        int n = this.size();
+        System.out.println("Size: " + n);
+        int reminder = n%3;
+        System.out.println("Reminder: " + reminder);
+        DNode pointer = head;
+        System.out.println("Head: " + pointer.element);
+        int size = n/3;
+        System.out.println("Size: " + size);
+
+        for (int i = 0; i < reminder; i++) {
+            ans[i] = new CDList_12345678d_TangTszkei();
+            for (int j = 0; j < size+1; j++) {
+                ans[i].insert(pointer.element);
+                pointer = pointer.next;
+                System.out.println("List "+i+ ": "+ans[i].toString());
+            }
+
+        }
+
+        for (int i = reminder; i < 3; i++) {
+            ans[i] = new CDList_12345678d_TangTszkei();
+            for (int j = 0; j < size; j++) {
+                ans[i].insert(pointer.element);
+                pointer = pointer.next;
+                System.out.println("List "+i+ ": "+ans[i].toString());
+            }
+
+        }
+
 		return ans;	
 	}
 
 	// Bonus question.
 	public CDList_12345678d_TangTszkei[] split(int d) {
-		return null;	
-	}
+        CDList_12345678d_TangTszkei[] ans = new CDList_12345678d_TangTszkei[3];
+        int n = this.size();
+        System.out.println("Size: " + n);
+        int reminder = n%3;
+        System.out.println("Reminder: " + reminder);
+        DNode pointer = head;
+        System.out.println("Head: " + pointer.element);
+        int size = n/3;
+        System.out.println("Size: " + size);
+
+        for (int i = 0; i < reminder; i++) {
+            ans[i] = new CDList_12345678d_TangTszkei();
+            for (int j = 0; j < size+1; j++) {
+                ans[i].insert(pointer.element);
+                pointer = pointer.next;
+                System.out.println("List "+i+ ": "+ans[i].toString());
+            }
+
+        }
+
+        for (int i = reminder; i < d; i++) {
+            ans[i] = new CDList_12345678d_TangTszkei();
+            for (int j = 0; j < size; j++) {
+                ans[i].insert(pointer.element);
+                pointer = pointer.next;
+                System.out.println("List "+i+ ": "+ans[i].toString());
+            }
+
+        }
+
+        return ans;
+    }
+
+    public int size() {
+        if (head == null) return 0;
+        int size;
+        DNode cur = head;
+        size = 1;
+        cur = cur.next;
+        while (cur != head) {
+            size++;
+            cur = cur.next;
+        }
+        return size;
+    }
 
 	public String toString() {
         if (head == null) return "The list is empty.";
@@ -78,6 +150,10 @@ public class CDList_12345678d_TangTszkei { // Please change! In Eclipse, press A
             cur = cur.next;
         }
         return sb.toString();
+    }
+
+    public static void printSplited(CDList_12345678d_TangTszkei[] ans) {
+        for (CDList_12345678d_TangTszkei i: ans) System.out.println(i.toString());
     }
 
     public static void main(String[] args) {
