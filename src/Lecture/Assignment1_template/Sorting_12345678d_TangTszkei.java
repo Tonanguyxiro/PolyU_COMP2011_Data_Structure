@@ -1,5 +1,7 @@
 package Lecture.Assignment1_template;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * A better implementation of insertion sort.
  * 
  * The ith major iteration of insertion sort puts element a[i] to its correct position.
- * Your algorithm should use *binary search* to find the position of the first element 
+ * Your algorithm should use **binary search** to find the position of the first element
  * that is greater than (> not >=) a[i], or i if there does exist such an element.
  * 
  * Read the {@code Element} class carefully before you start.
@@ -34,7 +36,7 @@ public class Sorting_12345678d_TangTszkei { // Please change!
 	        return (String.valueOf(value)) + " (" + String.valueOf(originalPos) + ")";
 	    }
 	}
-    
+
     /**
      * VERY IMPORTANT.
      * 
@@ -53,18 +55,42 @@ public class Sorting_12345678d_TangTszkei { // Please change!
      * Running time: O(   ).   
      */ 
     public static void insertionSort(Element[] a) {
-        int i, j, n = a.length;
-        double key = 0;
-        for (i = 1; i < n; i++) {
-            key = a[i].value;
-            int low = 0, high = n - 1;
-            int mid = 0;
-            while (true) {
-                mid = low + (high - low) / 2;
-                
+        if(a.length == 0){
+            System.out.println("Oops! No element in a!");
+        }
+        else {
+            int start, end, mid = 0;
+            int n = a.length;
+            List<Element> out = new ArrayList<>();
+            out.add(a[0]);
+            int key = 0;
+            for (int i = 1; i < n; i++){
+                start = 0; end = i - 1; // Search region
+                mid = (int) Math.ceil(0.5*(start+end));
+                if (a[i].value >= out.get(end).value){
+                    out.add(a[i]);
+                    continue;
+                }
+                else {
+                    while (!(mid == end)){ // insert
+                        if (a[i].value < out.get(mid).value){
+                            end = mid;
+                        }
+                        else {
+                            start = mid;
+                        }
+                        mid = (int) Math.ceil(0.5*(start+end));
+                    }
+                    out.add(mid, a[i]);
+                }
+                System.out.println("Interaction " + i + Arrays.toString(out.toArray()));
             }
 
+            for (int i = 0; i < a.length; i++) {
+                a[i] = out.get(i);
+            }
         }
+
     }
     
     // The original insertion sort is copied for your reference.
@@ -103,6 +129,8 @@ public class Sorting_12345678d_TangTszkei { // Please change!
         System.out.println("Original: " + Arrays.toString(a));
         insertionSort(a);
         System.out.println("After sorted: " + Arrays.toString(a));
+        // Expected
+        // [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)]
     }
 }
 
