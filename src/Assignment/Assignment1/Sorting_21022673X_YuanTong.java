@@ -46,14 +46,14 @@ public class Sorting_21022673X_YuanTong { // Please change!
      *     2.
      *     3.
      *     ...
-     *
+     * [I have not discussed with anyone about this question]
      * I've sought help from the following Internet resources and books:
-     *     1.
+     *     1. JAVA Official Documentation
      *     2.
      *     3.
      *     ...
-     *
-     * Running time: O(   ).
+     * Running time O(log(n)) for each interaction
+     * Running time: O(nlog(n)) in total.
      */
     public static void insertionSort(Element[] a) {
         if(a.length == 0){
@@ -62,20 +62,26 @@ public class Sorting_21022673X_YuanTong { // Please change!
         else {
             int start, end, mid = 0;
             int n = a.length;
-//            List<Element> out = new ArrayList<>();
-//            out.add(a[0]);
-            Element[] out = new Element[n];
-            out[0] = a[0];
+            Element key;
             for (int i = 1; i < n; i++){
                 start = 0; end = i - 1; // Search region
                 mid = (int) Math.ceil(0.5*(start+end));
-                if (a[i].value >= out[end].value){
-                    out[i] = a[i];
+                key = a[i];
+                if (key.value >= a[end].value){
+                    System.out.println("Interaction " + i + Arrays.toString(a));
+                    continue;
+                }
+                else if(key.value < a[start].value){
+                    for (int j = i; j > 0; j--) {
+                        a[j] = a[j-1];
+                    }
+                    a[0] = key;
+                    System.out.println("Interaction " + i + Arrays.toString(a));
                     continue;
                 }
                 else {
                     while (!(mid == end)){ // insert
-                        if (a[i].value < out[mid].value){
+                        if (key.value < a[mid].value){
                             end = mid;
                         }
                         else {
@@ -84,14 +90,13 @@ public class Sorting_21022673X_YuanTong { // Please change!
                         mid = (int) Math.ceil(0.5*(start+end));
                     }
 
-                    for (int j = mid+1; j < n; j++) {
-                        out[j] = out[j-1];
+                    for (int j = i; j > mid; j--) {
+                        a[j] = a[j-1];
                     }
-                    out[mid] = a[mid];
+                    a[mid] = key;
                 }
-                System.out.println("Interaction " + i + Arrays.toString(out));
+                System.out.println("Interaction " + i + Arrays.toString(a));
             }
-            a = out;
         }
 
     }
@@ -132,6 +137,7 @@ public class Sorting_21022673X_YuanTong { // Please change!
         System.out.println("Original: " + Arrays.toString(a));
         insertionSort(a);
         System.out.println("After sorted: " + Arrays.toString(a));
+        System.out.println("Expected    : [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)]");
         // Expected
         // [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)]
     }
