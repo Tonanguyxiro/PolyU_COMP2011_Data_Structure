@@ -22,7 +22,7 @@ import java.util.Arrays;
  * [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)].
  */
 
-public class Sorting_21022673X_YuanTong { // Please change!
+public class Sorting_21022673X_YuanTong {
     /*
      * Each element has a double value and the original position in the input array.
      */
@@ -41,18 +41,11 @@ public class Sorting_21022673X_YuanTong { // Please change!
     /**
      * VERY IMPORTANT.
      *
-     * I've discussed this question with the following students:
-     *     1.
-     *     2.
-     *     3.
-     *     ...
      * [I have not discussed with anyone about this question]
+     *
      * I've sought help from the following Internet resources and books:
      *     1. JAVA Official Documentation
-     *     2.
-     *     3.
-     *     ...
-     * Running time O(log(n)) for each interaction
+     *
      * Running time: O(nlog(n)) in total.
      */
     public static void insertionSort(Element[] a) {
@@ -68,7 +61,7 @@ public class Sorting_21022673X_YuanTong { // Please change!
                 mid = (int) Math.ceil(0.5*(start+end));
                 key = a[i];
                 if (key.value >= a[end].value){
-                    System.out.println("Interaction " + i + Arrays.toString(a));
+//                    System.out.println("Interaction " + i + Arrays.toString(a));
                     continue;
                 }
                 else if(key.value < a[start].value){
@@ -76,7 +69,7 @@ public class Sorting_21022673X_YuanTong { // Please change!
                         a[j] = a[j-1];
                     }
                     a[0] = key;
-                    System.out.println("Interaction " + i + Arrays.toString(a));
+//                    System.out.println("Interaction " + i + Arrays.toString(a));
                     continue;
                 }
                 else {
@@ -95,7 +88,7 @@ public class Sorting_21022673X_YuanTong { // Please change!
                     }
                     a[mid] = key;
                 }
-                System.out.println("Interaction " + i + Arrays.toString(a));
+//                System.out.println("Interaction " + i + Arrays.toString(a));
             }
         }
 
@@ -128,7 +121,7 @@ public class Sorting_21022673X_YuanTong { // Please change!
     }
 
     public static void main(String[] args) {
-        double input[] = {1.25, 0, 1.25, 2.5, 10, 2.5, 1.25, 5, 2.5}; // try different inputs.
+        double input[] = {1, 0, 1.25, 0, 1.25, 2.5, 10, 0, 2.5, 1.25, 0, 5, 2.5}; // try different inputs.
         int n = input.length;
         Sorting_21022673X_YuanTong.Element[] a = new Sorting_21022673X_YuanTong.Element[n];
         for (int i = 0; i < input.length; i++)
@@ -137,7 +130,7 @@ public class Sorting_21022673X_YuanTong { // Please change!
         System.out.println("Original: " + Arrays.toString(a));
         insertionSort(a);
         System.out.println("After sorted: " + Arrays.toString(a));
-        System.out.println("Expected    : [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)]");
+//        System.out.println("Expected    : [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)]");
         // Expected
         // [0.0 (1), 1.25 (0), 1.25 (2), 1.25 (6), 2.5 (3), 2.5 (5), 2.5 (8), 5.0 (7), 10.0 (4)]
     }

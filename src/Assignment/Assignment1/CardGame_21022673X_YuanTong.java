@@ -1,7 +1,7 @@
 package Assignment.Assignment1;
 
 /*
- * @author Yixin Cao (September 11, 2021)
+ * @author Tong Yuan (September 28, 2021)
  *
  * You have been deliver a hand of cards, and you sorted them in the suit-first order:
  * spades, hearts, clubs, and diamonds, each suit in decreasing order.
@@ -25,24 +25,18 @@ import java.util.Arrays;
 public class CardGame_21022673X_YuanTong {
      /**
      * VERY IMPORTANT.
-     *
-     * I've discussed this question with the following students:
-     *     1.
-     *     2.
-     *     3.
-     *     ...
-     *
+     * I did not discuss with any student this time
      * I've sought help from the following Internet resources and books:
-     *     1.
-     *     2.
-     *     3.
-     *     ...
+     *     1. JAVA Official Documentation
      *
-     * Running time: O(   ).
+     * Running time: O( nlog(n) ).
      */
-    public static void reorder(Card[] hand) { // Rank first
+
+     // Reorder the card through rank-first order.
+     // The method used here is sorting the card according to the specific index number for single card by method in Q1.
+    public static void reorder(Card[] hand) {
         if(hand.length == 0){
-            System.out.println("Oops! No element in hand!");
+            System.out.println("Oops! No cards in hand!");
         }
         else {
             int start, end, mid = 0;
@@ -53,7 +47,7 @@ public class CardGame_21022673X_YuanTong {
                 mid = (int) Math.ceil(0.5*(start+end));
                 key = hand[i];
                 if (key.rank_first_index() >= hand[end].rank_first_index()){
-                    System.out.println("Interaction " + i + Arrays.toString(hand));
+//                    System.out.println("Interaction " + i + Arrays.toString(hand));
                     continue;
                 }
                 else if(key.rank_first_index() < hand[start].rank_first_index()){
@@ -61,7 +55,7 @@ public class CardGame_21022673X_YuanTong {
                         hand[j] = hand[j-1];
                     }
                     hand[0] = key;
-                    System.out.println("Interaction " + i + Arrays.toString(hand));
+//                    System.out.println("Interaction " + i + Arrays.toString(hand));
                     continue;
                 }
                 else {
@@ -80,7 +74,7 @@ public class CardGame_21022673X_YuanTong {
                     }
                     hand[mid] = key;
                 }
-                System.out.println("Interaction " + i + Arrays.toString(hand));
+//                System.out.println("Interaction " + i + Arrays.toString(hand));
             }
         }
     }
@@ -88,6 +82,8 @@ public class CardGame_21022673X_YuanTong {
 
 
     // Bonus question: reorder in the other direction: rank-first to suit-first.
+    // Reorder the card through suit-first order.
+    // The method used here is sorting the card according to the specific index number for single card by method in Q1.
     public static void reorderBack(Card[] hand) { // Suit first
         if(hand.length == 0){
             System.out.println("Oops! No element in hand!");
@@ -101,7 +97,7 @@ public class CardGame_21022673X_YuanTong {
                 mid = (int) Math.ceil(0.5*(start+end));
                 key = hand[i];
                 if (key.suit_first_index() >= hand[end].suit_first_index()){
-                    System.out.println("Interaction " + i + Arrays.toString(hand));
+//                    System.out.println("Interaction " + i + Arrays.toString(hand));
                     continue;
                 }
                 else if(key.suit_first_index() < hand[start].suit_first_index()){
@@ -109,7 +105,7 @@ public class CardGame_21022673X_YuanTong {
                         hand[j] = hand[j-1];
                     }
                     hand[0] = key;
-                    System.out.println("Interaction " + i + Arrays.toString(hand));
+//                    System.out.println("Interaction " + i + Arrays.toString(hand));
                     continue;
                 }
                 else {
@@ -128,7 +124,7 @@ public class CardGame_21022673X_YuanTong {
                     }
                     hand[mid] = key;
                 }
-                System.out.println("Interaction " + i + Arrays.toString(hand));
+//                System.out.println("Interaction " + i + Arrays.toString(hand));
             }
         }
     }
@@ -155,7 +151,9 @@ public class CardGame_21022673X_YuanTong {
         reorder(hand);
 //        reorderBack(hand);
         System.out.println("after reordering: " + Arrays.toString(hand));
-//        System.out.println("Expected        : [♠A, ♦A, ♥K, ♥J, ♦J, ♠10, ♣10, ♥9, ♦9, ♠8, ♥8, ♦7, ♦6, ♠4, ♣4, ♦4, ♠2, ♥2]");
+        System.out.println("Expected        : [♠A, ♦A, ♥K, ♥J, ♦J, ♠10, ♣10, ♥9, ♦9, ♠8, ♥8, ♦7, ♦6, ♠4, ♣4, ♦4, ♠2, ♥2]");
+        reorderBack(hand);
+        System.out.println("after reordering: " + Arrays.toString(hand));
     }
 }
 
@@ -187,10 +185,12 @@ class Card {
         return s;
     }
 
+    // assign a rank first specia index number to card
     public int rank_first_index(){
         return rank * -20 + suit;
     }
 
+    // assign a suit first specia index number to card
     public int suit_first_index(){
         return suit * 20 - rank;
     }
