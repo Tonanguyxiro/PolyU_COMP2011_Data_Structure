@@ -155,7 +155,7 @@ public class CardGame_12345678d_TangTszkei { // Please change!
         reorder(hand);
 //        reorderBack(hand);
         System.out.println("after reordering: " + Arrays.toString(hand));
-//        System.out.println("Expected        : [♠A, ♦A, ♥K, ♥J, ♦J, ♠10, ♣10, ♥9, ♦9, ♠8, ♥8, ♦7, ♦6, ♠4, ♣4, ♦4, ♠2, ♥2]");
+        System.out.println("Expected        : [♠A, ♦A, ♥K, ♥J, ♦J, ♠10, ♣10, ♥9, ♦9, ♠8, ♥8, ♦7, ♦6, ♠4, ♣4, ♦4, ♠2, ♥2]");
     }
 }
 

@@ -1,5 +1,7 @@
 package Lecture.Assignment1_template;
 
+import Assignment.Assignment1.CDList_21022673X_YuanTong;
+
 /**
  * 
  * @author Yixin Cao (September 11, 2021)
@@ -20,6 +22,14 @@ public class CDList_12345678d_TangTszkei { // Please change! In Eclipse, press A
         DNode previous, next;
 
         DNode(int data) { this.element = data; }
+    }
+
+    public CDList_12345678d_TangTszkei(DNode n) {
+        head = n;
+    }
+
+    public CDList_12345678d_TangTszkei() {
+
     }
 
 	private DNode head;
@@ -60,70 +70,63 @@ public class CDList_12345678d_TangTszkei { // Please change! In Eclipse, press A
 	public CDList_12345678d_TangTszkei[] split() {
 		CDList_12345678d_TangTszkei[] ans = new CDList_12345678d_TangTszkei[3];
         int n = this.size();
-        System.out.println("Size: " + n);
+//        System.out.println("Size: " + n);
         int reminder = n%3;
-        System.out.println("Reminder: " + reminder);
+//        System.out.println("Reminder: " + reminder);
         DNode pointer = head;
-        System.out.println("Head: " + pointer.element);
+//        System.out.println("Head: " + pointer.element);
         int size = n/3;
-        System.out.println("Size: " + size);
+//        System.out.println("Size: " + size);
 
         for (int i = 0; i < reminder; i++) {
-            ans[i] = new CDList_12345678d_TangTszkei();
-            for (int j = 0; j < size+1; j++) {
-                ans[i].insert(pointer.element);
-                pointer = pointer.next;
-                System.out.println("List "+i+ ": "+ans[i].toString());
-            }
-
+            ans[i] = take(size+1);
         }
-
         for (int i = reminder; i < 3; i++) {
-            ans[i] = new CDList_12345678d_TangTszkei();
-            for (int j = 0; j < size; j++) {
-                ans[i].insert(pointer.element);
-                pointer = pointer.next;
-                System.out.println("List "+i+ ": "+ans[i].toString());
-            }
-
+            ans[i] = take(size);
         }
-
 		return ans;	
 	}
 
 	// Bonus question.
 	public CDList_12345678d_TangTszkei[] split(int d) {
-        CDList_12345678d_TangTszkei[] ans = new CDList_12345678d_TangTszkei[3];
+        CDList_12345678d_TangTszkei[] ans = new CDList_12345678d_TangTszkei[d];
         int n = this.size();
-        System.out.println("Size: " + n);
-        int reminder = n%3;
-        System.out.println("Reminder: " + reminder);
+//        System.out.println("Size: " + n);
+        int reminder = n%d;
+//        System.out.println("Reminder: " + reminder);
         DNode pointer = head;
-        System.out.println("Head: " + pointer.element);
-        int size = n/3;
-        System.out.println("Size: " + size);
+//        System.out.println("Head: " + pointer.element);
+        int size = n/d;
+//        System.out.println("Size: " + size);
 
         for (int i = 0; i < reminder; i++) {
-            ans[i] = new CDList_12345678d_TangTszkei();
-            for (int j = 0; j < size+1; j++) {
-                ans[i].insert(pointer.element);
-                pointer = pointer.next;
-                System.out.println("List "+i+ ": "+ans[i].toString());
-            }
-
+            ans[i] = take(size+1);
         }
-
         for (int i = reminder; i < d; i++) {
-            ans[i] = new CDList_12345678d_TangTszkei();
-            for (int j = 0; j < size; j++) {
-                ans[i].insert(pointer.element);
-                pointer = pointer.next;
-                System.out.println("List "+i+ ": "+ans[i].toString());
-            }
-
+            ans[i] = take(size);
         }
-
         return ans;
+    }
+
+    public CDList_12345678d_TangTszkei take(int n) {
+        DNode tail;
+        tail = head;
+        for (int i = 1; i < n; i++) {
+            tail = tail.next;
+        }
+        DNode newHead = tail.next;
+        DNode ans = head;
+        DNode newTail = head.previous;
+
+        ans.previous = tail;
+        tail.next = ans;
+
+        head = newHead;
+
+        head.previous = newTail;
+        newTail.next = head;
+
+        return new CDList_12345678d_TangTszkei(ans);
     }
 
     public int size() {
@@ -157,13 +160,11 @@ public class CDList_12345678d_TangTszkei { // Please change! In Eclipse, press A
     }
 
     public static void main(String[] args) {
-        int[] a = {11, 12, 13, 55, 52, 58, 29, 26, 20};
+        int[] a = {11, 12, 13, 55, 52, 58, 29, 26, 20, 21, 21, 21};
         CDList_12345678d_TangTszkei l = new CDList_12345678d_TangTszkei();
         for (int i: a) l.insert(i);
         System.out.println(l);
-        CDList_12345678d_TangTszkei[] lists = l.split();
-        System.out.println(lists[0]);
-        System.out.println(lists[1]);
-        System.out.println(lists[2]);
+        System.out.println();
+        printSplited(l.split(5));
     }
 }
