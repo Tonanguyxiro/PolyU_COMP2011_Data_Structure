@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="lec6">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/packages/lec6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/packages/lec7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/packages/lec9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/packages/lec10(1).jar!/" />
+    </SOURCES>
+  </library>
+</component>

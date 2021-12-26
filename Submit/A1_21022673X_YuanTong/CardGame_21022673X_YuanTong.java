@@ -1,5 +1,3 @@
-package Assignment.Assignment1;
-
 /*
  * @author Tong Yuan (September 28, 2021)
  *

@@ -1,4 +1,3 @@
-package Assignment.Assignment1;
 
 /**
  *

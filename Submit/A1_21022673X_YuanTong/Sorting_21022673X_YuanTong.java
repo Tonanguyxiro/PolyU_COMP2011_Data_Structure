@@ -1,5 +1,3 @@
-package Assignment.Assignment1;
-// Remember to move to finally
 
 import java.util.Arrays;
 
